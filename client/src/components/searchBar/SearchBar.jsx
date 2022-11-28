@@ -10,11 +10,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./searchBar.css";
 import { DateRange } from "react-date-range";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
 import { Link } from "react-router-dom";
 
 const SearchBar = () => {
@@ -36,8 +37,6 @@ const SearchBar = () => {
 
   const navigate = useNavigate();
   
-
-
   const handleOption = (name, operation) => {
     setOptions((prev) => {
       return {
@@ -47,11 +46,11 @@ const SearchBar = () => {
     });
   };
 
-  
+  const {dispatch} = useContext(SearchContext);
 
   const handleSearch = () => {
-    
-    navigate("/hotellist", { state: { destination, dates, options } });
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    navigate("/hotels", { state: { destination, dates, options } });
   };
 
   return (
