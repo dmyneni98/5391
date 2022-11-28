@@ -1,0 +1,194 @@
+.inputform{
+    margin:20px;
+}
+
+.signupContainer{
+    color:#424874;
+    display: flex;
+    justify-content:center;
+    margin-bottom: 130px;
+    
+}
+.signupWrapper{
+    width: 20%;
+    max-width: 512px;
+    padding: 60px;
+    background-color: #F4EEFF ;
+    justify-content: center;
+    border-radius: 15px;
+}
+.signInput{
+   
+    display: block;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid #A6B1E1;
+    text-align: left;
+    height: 30px;
+    color: #424874;
+}
+
+.checkoutContainer{
+    color:#424874;
+    display: flex;
+    justify-content:center;
+    margin-bottom: 130px;
+    
+}
+.checkoutWrapper{
+    background-color: #F4EEFF;;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+    border-radius: 10px;
+    
+}
+
+.orderInfoContainer{
+    margin:30px 30px 30px 30px;
+    display: flex;
+    justify-content:center;
+ 
+
+}
+.orderInfoWrapper{
+   width: 100%;
+   
+}
+
+.flightOrderTitle{
+    color:#424874;
+}
+.paymentTitle{
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.arrowIcon{
+    margin:0px 5px;
+}
+.flightSummaryBox{
+   
+    margin: 20px 0px 20px 0px;
+    padding: 10px;
+    border:solid 1px #424874;;
+    border-radius: 10px;
+}
+.flightSubBox-time{
+    display:grid;
+    grid-template-columns: 2fr 1fr 2fr;
+
+}
+.flightSubBox{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.flightSummaryBox-info{
+    height:70px;
+ 
+    
+}
+.hrWrapper{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hrLine{
+    background-color: #424874;
+    width: 80%;
+
+  }
+  .flightAndPrice{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0px 15px 0px;
+}
+.flightSubBox-time-arrive{
+    text-align: right;
+}
+
+.mileageRedeemCheckbox{
+    margin-left: 10px;
+}
+.displayMileage{
+    font-weight: bold;
+    margin:15px 0px 15px 0px;
+}
+.fightOrder-btn{
+    position: relative;
+    top: 20px;
+    background-color: hsl(229, 61%, 72%);
+    color: white;
+    font-weight: bold;
+    padding:5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 57%;
+    margin-left: 40px;
+    margin-top: 20px;
+    height: 40px;
+
+}
+.fightOrder-btn:hover{
+    background-color:  #DCD6F7;
+    color:#424874;
+}
+.cardInfo{
+    display: grid;
+   
+}
+.CreditCard{
+    width: 70%;
+    margin: 50px 20px 20px 20px ;
+}
+.cardInfo{
+    margin:20px;
+    width: 80%;
+}
+.cardInfo-expireDate{
+    margin:20px;
+}
+
+.paymentContainer{
+    margin-top: 50px;
+}
+.cardInput{
+    height: 30px;
+    border: solid 1px;
+    border-radius: 3px;
+}
+.popOutSection{
+    text-align: center;
+    align-content: center;
+    justify-content:center;
+
+     
+}
+.vacation-icon{
+    font-size: 40px;
+}
+.register-title{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.link-home-btn{
+    text-decoration: none;
+    background-color:#F4EEFF;
+    margin-left:10px;
+    color:#424874;
+    font-weight: 500;
+    border: solid #424874 0.3px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+
+
+}
+.link-home-btn:hover{
+    background-color:  hsl(229, 61%, 72%);
+    color:#F4EEFF;
+}

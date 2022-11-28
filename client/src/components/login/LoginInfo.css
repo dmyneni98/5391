@@ -1,0 +1,79 @@
+.loginContainer {
+    justify-content: center;
+    display: flex;
+}
+.loginWrapper{
+    width: 20%;
+    max-width: 512px;
+    padding: 60px;
+    background-color: #F4EEFF ;
+    justify-content: center;
+    display: flex;
+    border-radius: 15px;
+}
+.signupWrapper{
+
+    max-width: 512px;
+    padding: 60px;
+    background-color: #F4EEFF ;
+    justify-content: center;
+    display: flex;
+    border-radius: 15px;
+}
+.signButton{
+    margin: 5px;
+   
+    border: 2px solid #A6B1E1;
+    border-radius: 5px;
+    height: 30px;
+    color: #424874;
+    cursor: pointer;
+    background-color: white;
+}
+.signInput{
+   
+    display: block;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid #A6B1E1;
+    text-align: left;
+    height: 30px;
+    color: #424874;
+}
+.loginform{
+    text-align: center;
+    justify-content: center;
+}
+.loginTitle{
+    color: #424874;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+
+.loginInput{
+    margin: 20px;
+    display: block;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid #A6B1E1;
+    text-align: center;
+    height: 30px;
+    color: #424874;
+}
+
+.loginButton{
+    margin: 5px;
+    width: 80%;
+    border: 2px solid #A6B1E1;
+    border-radius: 5px;
+    height: 30px;
+    color: #424874;
+    cursor: pointer;
+    background-color: white;
+}
+
+.loginButton:active{
+    background-color: #424874;
+    color: #A6B1E1;
+}

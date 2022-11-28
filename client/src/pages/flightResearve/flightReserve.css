@@ -1,0 +1,102 @@
+.flightReserve{
+    display: flex;
+    justify-content:center;
+    flex: 1;
+}
+.orderInfo{
+    display: flex;
+    justify-content:center;
+   margin-bottom: 110px;
+}
+.flightReserveContainer{
+  
+    background-color:#F4EEFF;
+    width:120% ;
+    max-width: 624px;
+    border-radius: 10px;
+    padding: 30px;
+
+}
+.flightDetailButtonContainer{
+    display: flex;
+    justify-items: center;
+}
+.goback-btn{
+    background-color: hsl(229, 61%, 72%);
+    color: white;
+    font-weight: bold;
+    padding:5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    float: right;
+    
+}
+.flightDetailButton{
+    background-color: hsl(229, 61%, 72%);
+    color: white;
+    font-weight: bold;
+    padding:5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.flightDetailButton:hover{
+    background-color:  #DCD6F7;
+    color:#424874;
+}
+
+.flightDetailTitle{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #424874;
+}
+
+
+.flightPrice{
+    display: flex;
+    justify-content: right;
+    margin-top: 0px;
+    
+}
+.flightPriceContainer{
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+.priceList{
+    list-style: none;
+}
+.priceNumber{
+    text-align: right;
+}
+.flightTotalPrise{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 20px 0px;
+    
+}
+.flightInfoBox{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: #424874;
+    margin-bottom:30px;
+    border:solid 1px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.airport{
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px;
+}
+.airline{
+    display:flex;
+    align-items: center;
+    margin-left: 80px;
+}

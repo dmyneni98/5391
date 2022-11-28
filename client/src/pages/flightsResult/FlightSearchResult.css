@@ -1,0 +1,51 @@
+
+.flightListContainer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+
+}
+.flightListWrapper{
+    width:100% ;
+    max-width: 1024px;
+}
+
+.sorting-flight{
+    justify-content: right;
+}
+.flightListResult{
+    background-color:#F4EEFF;
+    width:100% ;
+    max-width: 1024px;
+    border-radius: 10px;
+    
+}
+.flightListResultConatainer{
+    padding: 20px;
+}
+.sorting-flight{
+   
+    margin-bottom: 30px;
+    display: flex;
+    
+}
+.sortButton{
+    background-color:#F4EEFF;
+    margin-left:10px;
+    color:#424874;
+    font-weight: 500;
+    border: solid #424874 0.3px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+.sortButton:hover{
+    background-color:  #DCD6F7;
+    color:#424874;
+}
+.sortingText{
+    font-weight: bold;
+ 
+    color: #424874;
+}
