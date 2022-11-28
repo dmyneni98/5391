@@ -17,20 +17,25 @@ const SearchItem = ( props) => {
     const [returnDate, setReturntDate] = useState(props.returnDate);
     const [number, setNumber] = useState(props.number);
     const [flightsOrder, setFlightsOrder] = useState(props.flightsOrder)
-    
+
+    const [isBundle, setIsBundle] = useState(props.isBundle)
+    const [destination, setDestination] = useState(props.destination)
+    const [dates, setDates] = useState(props.dates)
+    const [options, setOptions] = useState(props.options)
+
     const handleClick=()=>{
         if (props.roundWay){
             props.setRoundWay(false);
             props.flightsOrder.push(props.item._id)
-            navigate("/flightList",{state:{roundWay,departCity,arrivetCity,startDate,returnDate,number}});
+            navigate("/flightList",{state:{isBundle,destination,dates,options,roundWay,departCity,arrivetCity,startDate,returnDate,number}});
         }
         else{
             props.flightsOrder.push(props.item._id)
             if(flightsOrder.length ==2 ){
-                navigate("/flightReserve-roundway",{state:{flightsOrder,number}});
+                navigate("/flightReserve-roundway",{state:{isBundle,destination,dates,options,flightsOrder,number}});
             }
             if(flightsOrder.length ==1 ){
-                navigate("/flightReserve-onedway",{state:{flightsOrder,number}});
+                navigate("/flightReserve-onedway",{state:{isBundle,destination,dates,options,flightsOrder,number}});
             }
    
         }
