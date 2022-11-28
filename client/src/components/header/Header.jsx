@@ -34,9 +34,11 @@ import { Link } from "react-router-dom";
                   </Link>
                 </div>
                 <div className="headerListItem">
+                  <Link to="/bundle" className="link">
                   <FontAwesomeIcon icon={faGlobe} />
                   <span>Flight+Hotel</span>
-                </div>
+                  </Link>
+                </div>>
                 <div className="headerListItem">
                   <FontAwesomeIcon icon={faPiggyBank} />
                   <Link to="/deals" className="link">
