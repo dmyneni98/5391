@@ -11,6 +11,18 @@ function FlightReserveRW(){
     const [flightsOrder, setFlightsOrder] = useState(location.state.flightsOrder)
     const [number, setNumber] = useState(location.state.number);
 
+    const [isBundle, setIsBundle] = useState(location.state.isBundle)
+    const [destination, setDestination] = useState(location.state.destination)
+    const [dates, setDates] = useState(location.state.dates)
+    const [options, setOptions] = useState(location.state.options)
+
+
+    console.log("search reserve.jsx")
+    console.log(isBundle)
+    console.log(destination)
+    console.log(dates)
+    console.log(options)
+    
     const { data, loading, error} = useFetch(`/flights?_id=${flightsOrder[0]}&_id=${flightsOrder[1]}`)
 
     let totalPrice = 0
@@ -19,7 +31,8 @@ function FlightReserveRW(){
     }
 
     const handleReserve = ()=>{
-        navigate("/flightCheckout",{state:{flightsOrder,number}});
+        isBundle? navigate("/hotels",{state:{destination,dates,options, flightsOrder,number}})
+        :navigate("/flightCheckout",{state:{flightsOrder,number}});
     }
   
     return (
