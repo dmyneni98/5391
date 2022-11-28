@@ -38,7 +38,7 @@ import { Link } from "react-router-dom";
                   <FontAwesomeIcon icon={faGlobe} />
                   <span>Flight+Hotel</span>
                   </Link>
-                </div>>
+                </div>
                 <div className="headerListItem">
                   <FontAwesomeIcon icon={faPiggyBank} />
                   <Link to="/deals" className="link">

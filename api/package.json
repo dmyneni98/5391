@@ -1,7 +1,6 @@
 {
   "name": "backend-5391",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -17,7 +16,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.7.3",
+    "mongoose": "^6.7.4",
     "nodemon": "^2.0.20"
-  }
+  },
+  "description": ""
 }
