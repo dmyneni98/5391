@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {AuthContext, AuthContextProvider} from "../../context/AuthContext";
 import "./LoginInfo.css";
+import Login from '../../pages/login/Login';
 
 const LoginInfo = () => {
   const [credentials, setCredentials] = useState({
@@ -25,6 +26,7 @@ const LoginInfo = () => {
     try {
       const res = await axios.post("http://localhost:8800/api/auth/login", credentials);
       //dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      console.log(res.data.details);
       localStorage.setItem("user",res.data.details.username)
       localStorage.setItem("userid",res.data.details._id)
       navigate("/")
@@ -43,7 +45,7 @@ const LoginInfo = () => {
           <input className="loginInput"type="password" placeholder="Password" id="password" name="password" onChange={handleChange}/>
           <button className="loginButton" type="button" onClick={handleClick}>Login</button>
       </form>
-      {error && <span>{error.message}</span>}
+      {error && <span align="center">{error.message}</span>}
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ import OrderFlight from "./pages/orderFlight/OrderFlight";
 import Login from "./pages/login/Login"
 import Signme from "./pages/signup/Signup";
 import DealList from "./pages/deals/Deals";
-
+import Booking from "./pages/booking/Booking";
 import HotelSearchBar from "./pages/hotelSearchBar/HotelSearchBar";
 import Hotel from "./pages/hotel/Hotel";
 import List from "./pages/list/List";
@@ -34,6 +34,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Signme/>} />
         <Route path="/deals" element={<DealList/>} />
+        <Route path="/booking" element={<Booking/>} />
         <Route path="/hotelsearch" element={<HotelSearchBar/>}/>
         <Route path="/hotels" element={<List/>}/>
         <Route path="/hotels/:id" element={<Hotel/>}/>
