@@ -20,6 +20,7 @@ import Hotel from "./pages/hotel/Hotel";
 import List from "./pages/list/List";
 import Bundle from "./pages/Bundle/Bundle";
 import HotelCheckout from "./pages/hotelCheckout/HotelCheckout";
+import BundleCheckout from "./pages/bundleCheckout/BundleCheckout";
 
 
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/hotels" element={<List/>}/>
         <Route path="/hotels/:id" element={<Hotel/>}/>
         <Route path="/bundle" element={<Bundle/>}/>
+        <Route path="/bundle/Checkout" element={<BundleCheckout/>}/>
         <Route path="/hotelCheckout" element={<HotelCheckout/>}/>
       </Routes>
     </BrowserRouter>
