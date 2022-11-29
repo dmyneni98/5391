@@ -19,6 +19,7 @@ import HotelSearchBar from "./pages/hotelSearchBar/HotelSearchBar";
 import Hotel from "./pages/hotel/Hotel";
 import List from "./pages/list/List";
 import Bundle from "./pages/Bundle/Bundle"
+import FlightStatus from "./pages/flightStatus/FlightStatus";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/hotels" element={<List/>}/>
         <Route path="/hotels/:id" element={<Hotel/>}/>
         <Route path="/bundle" element={<Bundle/>}/>
+        <Route path="/flightStatus" element={<FlightStatus/>}/>
       </Routes>
     </BrowserRouter>
   );
