@@ -69,7 +69,7 @@ const SearchItem = ( props) => {
                 </span>
                 <span className="partItemContainer">
                     <div className="textInfor">
-                        duration time
+                       {props.item.flightTime}
                     </div>
                     <hr />
                 </span>

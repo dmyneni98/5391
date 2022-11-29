@@ -88,13 +88,13 @@ function FlightReserveOW(){
                                     <div className="airlineContainer">
                                         <div></div>
                                         <div className="flightText">
-                                            Airline:  {item.airlineCompany}
+                                            {item.airlineCompany}
                                         </div>
                                         <div className="flightText">
-                                            Flight No. {item.flightNunber}
+                                            {item.flightNunber}
                                         </div>
                                         <div className="flightText">
-                                            ---flight duration
+                                        Flight Time {item.flightTime}
                                             {getTotalPrice(item.price)}
                                            
                                         </div>

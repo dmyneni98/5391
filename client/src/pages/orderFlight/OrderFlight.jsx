@@ -35,6 +35,8 @@ function OrderFlight(){
     //const userName = "Myles"  //wait to change. after get authentication
       const userName=localStorage.getItem("user")
       console.log(userName)
+
+
     useEffect(()=>{
         Promise.all([
             fetch(`/flights?_id=${flightsOrder[0]}`),
@@ -50,8 +52,8 @@ function OrderFlight(){
             console.log(c[0])
             
             setUserId(c[0])
-            setMileage( c[0].mileage)
-            setIfInternational(a[0].flightType=="international")
+            setMileage(c[0].mileage)
+            setIfInternational(a[0].ifInternational)
             setFlightReservation(c[0].flightOrder)     
 
             console.log(_.isEqual(flightsList[0],(a[0])))
