@@ -24,6 +24,11 @@
   gap: 10px;
 }
 
+.headerBtn
+{
+  background-color:#424874;
+}
+
 .headerSearchInput {
   border: none;
   outline: none;
@@ -35,14 +40,14 @@
 }
 .date {
   position: absolute;
-  top: 50px;
+  top: 50px !important;
   z-index: 2;
 }
 
 .options {
   z-index: 2;
   position: absolute;
-  top: 50px;
+  top: 50px !important;
   background-color: white;
   color: gray;
   border-radius: 5px;
