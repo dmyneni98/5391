@@ -63,7 +63,7 @@ const Reserve = ({ setOpen, hotelId }) => {
         })
       );
       setOpen(false);
-      navigate("/");
+      navigate("/hotelCheckout", {state: {hotel: data, selectedRooms, dates}});
     } catch (err) {}
   };
   return (

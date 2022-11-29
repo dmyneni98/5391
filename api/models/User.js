@@ -79,7 +79,17 @@ const UserSchema = new mongoose.Schema(
           ],
           default: [],
       },
+        hotelOrder:{
+          type: [
+              {
+                  hotel: { type: String },
+                  numPeople: { type: Number }
+              }
+          ],
+          default: [],
+      },
     },
+    
     { timestamps: true }
     
     );

@@ -7,7 +7,7 @@ import Footer from "../../components/footer/Footer";
 import MailList from "../../components/mailList/MailList";
 import Navbar from "../../components/navbar/Navbar";
 import PropertyList from "../../components/propertyList/PropertyList";
-import "./hotelSearchBar.css"
+import "./hotelSearchBar.css";
 
 const HotelSearchBar = () => {
     return(
