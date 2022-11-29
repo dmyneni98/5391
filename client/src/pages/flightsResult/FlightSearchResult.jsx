@@ -41,7 +41,9 @@ function FlightSearchResult(){
     console.log(departDateFormated)
     console.log(departCity)
     console.log(arrivetCity)
-
+    console.log(destination)
+    console.log(dates)
+    console.log(options)
     const handlePriceSorting = event =>{
 
         if(event.target.value =="price"){
