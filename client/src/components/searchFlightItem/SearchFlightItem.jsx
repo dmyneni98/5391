@@ -22,16 +22,24 @@ const SearchItem = ( props) => {
         if (props.roundWay){
             props.setRoundWay(false);
             props.flightsOrder.push(props.item._id)
+            if(localStorage.getItem("user")!="")
             navigate("/flightList",{state:{roundWay,departCity,arrivetCity,startDate,returnDate,number}});
+            else
+            navigate("/login")
         }
         else{
             props.flightsOrder.push(props.item._id)
-            if(flightsOrder.length ==2 ){
-                navigate("/flightReserve-roundway",{state:{flightsOrder,number}});
-            }
-            if(flightsOrder.length ==1 ){
-                navigate("/flightReserve-onedway",{state:{flightsOrder,number}});
-            }
+            if(localStorage.getItem("user")!="")
+            {
+                if(flightsOrder.length ==2 ){
+                    navigate("/flightReserve-roundway",{state:{flightsOrder,number}});
+                }
+                if(flightsOrder.length ==1 ){
+                    navigate("/flightReserve-onedway",{state:{flightsOrder,number}});
+                }
+           }else{
+            navigate("/login")
+           }
    
         }
     }

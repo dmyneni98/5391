@@ -32,8 +32,9 @@ function OrderFlight(){
 
  //for testing
 
-    const userName = "Myles"  //wait to change. after get authentication
-
+    //const userName = "Myles"  //wait to change. after get authentication
+      const userName=localStorage.getItem("user")
+      console.log(userName)
     useEffect(()=>{
         Promise.all([
             fetch(`/flights?_id=${flightsOrder[0]}`),
