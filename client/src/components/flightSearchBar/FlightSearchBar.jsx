@@ -29,7 +29,8 @@ function FlightSearchBar(){
         passenger:1,
     });
 
-
+    console.log(departCity)
+    console.log(arrivetCity)
 
     const navigate = useNavigate()
 
@@ -73,7 +74,7 @@ function FlightSearchBar(){
                         type="text" 
                         placeholder="Where from?" 
                         className="searchInput"
-                        onChange={e=>setDepartCity(e.target.value.toLowerCase())}/>
+                        onChange={e=>setDepartCity(e.target.value)}/>
                 </div>
                 <div className="flightSearchItem">
                     <FontAwesomeIcon icon={faPlane} className="searchIcon" />   
@@ -81,7 +82,7 @@ function FlightSearchBar(){
                         type="text" 
                         placeholder="Where to?" 
                         className="searchInput"
-                        onChange={e=>setArriveCity(e.target.value.toLowerCase())}/>
+                        onChange={e=>setArriveCity(e.target.value)}/>
                 </div>
                 <div className="flightSearchItem">
                     <FontAwesomeIcon icon={faCalendar} className="searchIcon" />   
@@ -116,13 +117,13 @@ function FlightSearchBar(){
                     className="searchText"
                     >{`${number.passenger} Passenger `}</span>
                     {openNumber && (
-                    <div className="options">
-                        <div className="optionItem">
+                    <div className="passenger-options">
+                        <div className="passenger-optionItem">
                         
-                        <div className="optionCounter">
+                        <div className="passenger-optionCounter">
                             <button
                             disabled={number.passenger <= 1}
-                            className="optionCounterButton"
+                            className="passenger-optionCounterButton"
                             onClick={() => handleNumber("passenger","d")}
                             >
                             -
@@ -131,7 +132,7 @@ function FlightSearchBar(){
                             {number.passenger}
                             </span>
                             <button
-                            className="optionCounterButton"
+                            className="passenger-optionCounterButton"
                             onClick={() => handleNumber("passenger","i")}
                             >
                             +

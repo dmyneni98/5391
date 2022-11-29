@@ -3,15 +3,15 @@ import {
 } 
 from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import axios from "axios";
+import useFetch from "../../hooks/useFetch"
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import Header from "../../components/header/Header"
 import Footer from "../../components/footer/Footer"
 import "./orderflight.css"
 import { useLocation,useNavigate } from "react-router-dom"
-
-
+import _ from 'lodash';
 
 
 function OrderFlight(){
@@ -30,10 +30,11 @@ function OrderFlight(){
     const mileageRate = 0.01
     const taxRate = 0.15
 
- //for testing
+    //for testing
 
-    const userName = "Myles"  //wait to change. after get authentication
-
+    //const userName = "Myles"  //wait to change. after get authentication
+      const userName=localStorage.getItem("user")
+      console.log(userName)
     useEffect(()=>{
         Promise.all([
             fetch(`/flights?_id=${flightsOrder[0]}`),
@@ -43,19 +44,29 @@ function OrderFlight(){
             const a = await aa.json();
             const b = await bb.json();
             const c = await cc.json();
+            
+            console.log(a[0])
+            console.log(b[0])
+            console.log(c[0])
+            
             setUserId(c[0])
             setMileage( c[0].mileage)
             setIfInternational(a[0].flightType=="international")
             setFlightReservation(c[0].flightOrder)     
-            if(!flightsList.includes(a[0])){
+
+            console.log(_.isEqual(flightsList[0],(a[0])))
+            if(!_.isEqual(flightsList[0],(a[0]))){
                 flightsList.push(a[0])
+                console.log("add a  ")
+                console.log(a[0])
             }
-            if (b.success != false && !flightsList.includes(b[0])){         
-                flightsList.push(b[0])  
+            if (b.success != false && !_.isEqual(flightsList[1],(b[0]))){         
+                flightsList.push(b[0]) 
+                console.log("add b ") 
             }
           })
-    
     },[]);
+    
     
     const flightType = ifInternational ? "International flight" : "Domestic flight"    
     const noRedeem =  Math.floor(mileage /(ifInternational? 50000:25000))           // how many flights the user can redeem
@@ -256,7 +267,7 @@ function OrderFlight(){
                                 <hr />
                                 <form className="CreditCard">
                                     <div className="cardInfo-expireDate">
-                                        <div> Card Number</div>
+                                        <div> Name On Card</div>
                                         <input type="text" className="cardInput" placeholder="Fisrt Name"  name="firstName" id="firstName" />
                                        
                                         <input type="text" className="cardInput" placeholder="Last Name"  name="lastName" id="lastName" />
@@ -266,7 +277,7 @@ function OrderFlight(){
                                         <input type="text" className="cardInput" name="cardNumber" id="cardNumber" />
                                     </div>
                                     <div className="cardInfo-expireDate">
-                                        <div> Card Number</div>
+                                        <div>Expiration Date</div>
                                         <input type="text" className="cardInput" placeholder="YYYY" name="expireYear" id="expireYear" />
                                         <input type="text" className="cardInput" placeholder="MM"  name="expireMonth" id="expireMonth" />
                                     </div>

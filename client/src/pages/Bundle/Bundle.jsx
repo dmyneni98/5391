@@ -10,9 +10,7 @@ function Bundle(){
             <Header/>
             <BundleSearchBar/>
             <Footer/>
-
         </div>
-        
     )
 }
 
