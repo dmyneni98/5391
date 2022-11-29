@@ -9,7 +9,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import Header from "../../components/header/Header"
 import Footer from "../../components/footer/Footer"
-import "./orderflight.css"
+import "./bundleCheckout.css"
 import { useLocation,useNavigate } from "react-router-dom"
 import _ from 'lodash';
 
@@ -27,10 +27,11 @@ function OrderFlight(){
     const [flightReservation,setFlightReservation] = useState([])       // store user.flightOrder
     const [success, setSuccess] = useState(false);
 
+    const [hotelOrder, setHotelOrder] = useState(location.state.hotelOrder)
+    const [hotelList, setHotelList] = useState()
+
     const mileageRate = 0.01
     const taxRate = 0.15
-
-    //for testing
 
     //const userName = "Myles"  //wait to change. after get authentication
       const userName=localStorage.getItem("user")
@@ -42,19 +43,24 @@ function OrderFlight(){
             fetch(`/flights?_id=${flightsOrder[0]}`),
             fetch(`/flights?_id=${flightsOrder[1]}`),
             fetch(`/users?username=${userName}`),
-          ]).then(async([aa, bb, cc]) => {
+            fetch(`/hotels?_id=${hotelOrder}`),     //   <- fetch hotel info
+          ]).then(async([aa, bb, cc, dd]) => {
             const a = await aa.json();
             const b = await bb.json();
             const c = await cc.json();
-            
+            const d = await dd.json();
+
             console.log(a[0])
             console.log(b[0])
             console.log(c[0])
+            console.log(d[0])   // <- hotel info
             
             setUserId(c[0])
             setMileage(c[0].mileage)
             setIfInternational(a[0].ifInternational)
-            setFlightReservation(c[0].flightOrder)     
+            setFlightReservation(c[0].flightOrder) 
+
+            setHotelList(d[0])
 
             console.log(_.isEqual(flightsList[0],(a[0])))
             if(!_.isEqual(flightsList[0],(a[0]))){
@@ -70,7 +76,7 @@ function OrderFlight(){
     },[]);
     
     
-    const flightType = ifInternational ? "international flight" : "domestic flight"    
+    const flightType = ifInternational ? "International flight" : "Domestic flight"    
     const noRedeem =  Math.floor(mileage /(ifInternational? 50000:25000))           // how many flights the user can redeem
     const placeFlightOrder =()=>{
         //compute the updated mileage
@@ -181,38 +187,38 @@ function OrderFlight(){
                                 <h2>Order Summary</h2>
                             </div>
                             <div className="flightSummary">
-                            <>
-                            {flightsList.map((item)=>
-                            <div className="flightSummaryBox">
-                                {reset}
-                        
-                                {generatePriceList(item.price, number.passenger)}
-                                <div className="flightSummaryBox-flightNum">
-                                   {item.flightNunber}
-                                </div>
-                                <div className="flightSummaryBox-info">
-                                <div className="flightSubBox">
-                                    {item.departAirport}
-                                    <FontAwesomeIcon icon={faArrowRight} className="arrowIcon"  /> 
-                                    {item.arriveAirport}
+                                <>
+                                {flightsList.map((item)=>
+                                <div className="flightSummaryBox">
+                                    {reset}
+                            
+                                    {generatePriceList(item.price, number.passenger)}
+                                    <div className="flightSummaryBox-flightNum">
+                                    {item.flightNunber}
+                                    </div>
+                                    <div className="flightSummaryBox-info">
+                                    <div className="flightSubBox">
+                                        {item.departAirport}
+                                        <FontAwesomeIcon icon={faArrowRight} className="arrowIcon"  /> 
+                                        {item.arriveAirport}
 
+                                    </div>
+                                    <div className="flightSubBox-time">
+                                        {item.departDate.substring(0, 10)}{" "}
+                                        {item.departTime}
+                                        <div className="hrWrapper">
+                                            <hr className="hrLine" />
+                                        </div>    
+                                        <div className="flightSubBox-time-arrive">
+                                        {item.arriveDate.substring(0, 10)}{" "}                       
+                                        {item.arriveTime}   
+                                        </div> 
+                                    </div>
+                                    </div>
+                                    
                                 </div>
-                                <div className="flightSubBox-time">
-                                    {item.departDate.substring(0, 10)}{" "}
-                                    {item.departTime}
-                                    <div className="hrWrapper">
-                                        <hr className="hrLine" />
-                                    </div>    
-                                    <div className="flightSubBox-time-arrive">
-                                    {item.arriveDate.substring(0, 10)}{" "}                       
-                                    {item.arriveTime}   
-                                    </div> 
-                                </div>
-                                </div>
-                                
-                            </div>
-                            )}
-                            </>
+                                )}
+                                </>
 
                             </div>
                             <div className="flightOrderTitle">

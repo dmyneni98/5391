@@ -74,15 +74,14 @@ const BundleSearchBar = () => {
         console.log("startDate")
         console.log(startDate)
         console.log("returnDate")
-        console.log(returnDate)
+        console.log("isBundle")
+        console.log(isBundle)
 
         navigate("/flightList", { state: { destination, dates, options,isBundle,flightsOrder,roundWay,departCity,arrivetCity,startDate,returnDate,number } });
     };
 
     return (
         <div className="bundleSearchWrapper">
-
-    
         <div className="bundleheaderSearch">
         <div className="headerSearchItem">
         <FontAwesomeIcon icon={faPlane} className="searchIcon" />   

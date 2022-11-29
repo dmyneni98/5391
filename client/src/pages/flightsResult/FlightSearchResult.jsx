@@ -32,16 +32,18 @@ function FlightSearchResult(){
     const offset = location.state.startDate.getTimezoneOffset();
     const departDate = new Date(location.state.startDate.getTime() - (offset*60*1000));
     const departDateFormated= departDate.toISOString().split('T')[0]
-    const { data, loading, error} = useFetch(`/flights?minPrice=${minPrice||0}&&departCity=${location.state.departCity}&&arriveCity=${location.state.arrivetCity}&&departDate=${departDateFormated}`)
-
+    const { data, loading, error} = useFetch(`/flights?departCity=${location.state.departCity}&&arriveCity=${location.state.arrivetCity}&&departDate=${departDateFormated}`)
 
 
     console.log("search list.jsx")
     console.log(data)
+    console.log("departDate")
+    console.log(departDateFormated)
+    console.log(departCity)
+    console.log(arrivetCity)
     console.log(destination)
     console.log(dates)
     console.log(options)
-
     const handlePriceSorting = event =>{
 
         if(event.target.value =="price"){

@@ -14,12 +14,14 @@ import OrderFlight from "./pages/orderFlight/OrderFlight";
 import Login from "./pages/login/Login"
 import Signme from "./pages/signup/Signup";
 import DealList from "./pages/deals/Deals";
-
+import Booking from "./pages/booking/Booking";
 import HotelSearchBar from "./pages/hotelSearchBar/HotelSearchBar";
 import Hotel from "./pages/hotel/Hotel";
 import List from "./pages/list/List";
-import Bundle from "./pages/Bundle/Bundle"
+import Bundle from "./pages/Bundle/Bundle";
 import FlightStatus from "./pages/flightStatus/FlightStatus";
+import HotelCheckout from "./pages/hotelCheckout/HotelCheckout";
+import BundleCheckout from "./pages/bundleCheckout/BundleCheckout";
 
 
 function App() {
@@ -35,11 +37,14 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Signme/>} />
         <Route path="/deals" element={<DealList/>} />
+        <Route path="/booking" element={<Booking/>} />
         <Route path="/hotelsearch" element={<HotelSearchBar/>}/>
         <Route path="/hotels" element={<List/>}/>
         <Route path="/hotels/:id" element={<Hotel/>}/>
         <Route path="/bundle" element={<Bundle/>}/>
         <Route path="/flightStatus" element={<FlightStatus/>}/>
+        <Route path="/bundle/Checkout" element={<BundleCheckout/>}/>
+        <Route path="/hotelCheckout" element={<HotelCheckout/>}/>
       </Routes>
     </BrowserRouter>
   );
