@@ -54,6 +54,17 @@ const FlightSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  flightStatus:{
+    type: String,
+    required: true,
+  },
+  flightTime: {
+    type: String,
+    required: true,
+  },
+  gate: {
+    type: String,
+  },
 
   passengers:{
     type: [

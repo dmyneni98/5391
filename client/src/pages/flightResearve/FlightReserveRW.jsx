@@ -31,7 +31,7 @@ function FlightReserveRW(){
     }
 
     const handleReserve = ()=>{
-        isBundle? navigate("/hotels",{state:{destination,dates,options, flightsOrder,number}})
+        isBundle? navigate("/hotels",{state:{destination,dates,options,flightsOrder,number}})
         :navigate("/flightCheckout",{state:{flightsOrder,number}});
     }
   

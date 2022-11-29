@@ -18,6 +18,9 @@ export const createFlight = async (req,res,next)=>{
         price:req.body.price,
         ifInternational:req.body.ifInternational,
         miles:req.body.miles,
+        flightTime:req.body.flightTime,
+        gate:"",
+        flightStatus:"ON TIME",
         passengers:[],
       })
         const saveFlight = await newFlight.save()
