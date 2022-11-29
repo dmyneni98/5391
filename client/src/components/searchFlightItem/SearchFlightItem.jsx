@@ -17,7 +17,12 @@ const SearchItem = ( props) => {
     const [returnDate, setReturntDate] = useState(props.returnDate);
     const [number, setNumber] = useState(props.number);
     const [flightsOrder, setFlightsOrder] = useState(props.flightsOrder)
-    
+
+    const [isBundle, setIsBundle] = useState(props.isBundle)
+    const [destination, setDestination] = useState(props.destination)
+    const [dates, setDates] = useState(props.dates)
+    const [options, setOptions] = useState(props.options)
+
     const handleClick=()=>{
         if (props.roundWay){
             props.setRoundWay(false);
@@ -40,6 +45,7 @@ const SearchItem = ( props) => {
            }else{
             navigate("/login")
            }
+        
    
         }
     }

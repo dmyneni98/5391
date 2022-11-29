@@ -23,16 +23,24 @@ function FlightSearchResult(){
     const [selected, setSelected] = useState('');
     const [priceSorted,setPriceSorted] = useState(false);
     const [airlineSorted,setAirlineSorted] = useState(false);
+//state for hotel
+    const [isBundle, setIsBundle] = useState(location.state.isBundle)
+    const [destination, setDestination] = useState(location.state.destination)
+    const [dates, setDates] = useState(location.state.dates)
+    const [options, setOptions] = useState(location.state.options)
 
-
-  
     const offset = location.state.startDate.getTimezoneOffset();
     const departDate = new Date(location.state.startDate.getTime() - (offset*60*1000));
     const departDateFormated= departDate.toISOString().split('T')[0]
     const { data, loading, error} = useFetch(`/flights?minPrice=${minPrice||0}&&departCity=${location.state.departCity}&&arriveCity=${location.state.arrivetCity}&&departDate=${departDateFormated}`)
-    console.log(location.state.departCity)
-    console.log(location.state.arrivetCity)
 
+
+
+    console.log("search list.jsx")
+    console.log(data)
+    console.log(destination)
+    console.log(dates)
+    console.log(options)
 
     const handlePriceSorting = event =>{
 
@@ -43,7 +51,6 @@ function FlightSearchResult(){
             console.log("change sorted value -price )");
             console.log(priceSorted);
             console.log(airlineSorted);
-            
         }
         if(event.target.value =="airline"){
 
@@ -84,13 +91,18 @@ function FlightSearchResult(){
                             ) : (
                             data.length ? <>  
                                 {data.map((item) => 
-                                    <SearchItem item={item} 
+                                    <SearchItem 
+                                    item={item} 
                                     roundWay={roundWay} setRoundWay={setRoundWay} 
                                     departCity={departCity} setDepartCity={setDepartCity}
                                     arrivetCity={arrivetCity} setArriveCity={setArriveCity}
                                     returnDate={returnDate} setStartDate ={setStartDate}
                                     flightsOrder={flightsOrder} setFlightsOrder={setFlightsOrder}
                                     number={number} setNumber={setNumber}
+                                    isBundle={isBundle} setIsBundle={setIsBundle}
+                                    destination={destination} setDestination={setDestination}
+                                    dates= {dates} setDates={setDates}
+                                    options={options} setOptions={setOptions}
                                     key={item._id} />
                                 )}
                             </>: <div className="sortingText">We don't have any flights matching your search on our site. Try changing some details.</div>
@@ -109,6 +121,10 @@ function FlightSearchResult(){
                                     returnDate={returnDate} setStartDate ={setStartDate}
                                     flightsOrder={flightsOrder} setFlightsOrder={setFlightsOrder}
                                     number={number} setNumber={setNumber}
+                                    isBundle={isBundle} setIsBundle={setIsBundle}
+                                    destination={destination} setDestination={setDestination}
+                                    dates= {dates} setDates={setDates}
+                                    options={options} setOptions={setOptions}
                                     key={item._id} />
                                 )}
                             </>: <div className="sortingText">We don't have any flights matching your search on our site. Try changing some details.</div>
@@ -120,13 +136,19 @@ function FlightSearchResult(){
                             ) : (
                             data.length ? <>
                                 {data.sort((a,b)=> a.airlineCompany.localeCompare(b.airlineCompany)).map((item) => 
-                                    <SearchItem item={item} 
+                                    <SearchItem 
+                                    item={item} 
                                     roundWay={roundWay} setRoundWay={setRoundWay} 
                                     departCity={departCity} setDepartCity={setDepartCity}
                                     arrivetCity={arrivetCity} setArriveCity={setArriveCity}
                                     returnDate={returnDate} setStartDate ={setStartDate}
                                     flightsOrder={flightsOrder} setFlightsOrder={setFlightsOrder}
                                     number={number} setNumber={setNumber}
+                                    isBundle={isBundle} setIsBundle={setIsBundle}
+                                    destination={destination} setDestination={setDestination}
+                                    dates= {dates} setDates={setDates}
+                                    options={options} setOptions={setOptions}
+
                                     key={item._id} />
                                 )}
                             </>: <div className="sortingText">We don't have any flights matching your search on our site. Try changing some details.</div>

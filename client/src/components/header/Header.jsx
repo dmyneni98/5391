@@ -29,13 +29,15 @@ import { Link } from "react-router-dom";
                 </div>
                 <div className="headerListItem">
                   <FontAwesomeIcon icon={faBed} />
-                  <Link to="/hotels" className="link">
+                  <Link to="/hotelsearch" className="link">
                   <span>Hotels</span>
                   </Link>
                 </div>
                 <div className="headerListItem">
+                  <Link to="/bundle" className="link">
                   <FontAwesomeIcon icon={faGlobe} />
                   <span>Flight+Hotel</span>
+                  </Link>
                 </div>
                 <div className="headerListItem">
                   <FontAwesomeIcon icon={faPiggyBank} />
