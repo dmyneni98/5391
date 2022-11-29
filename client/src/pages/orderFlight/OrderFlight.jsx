@@ -70,7 +70,7 @@ function OrderFlight(){
     },[]);
     
     
-    const flightType = ifInternational ? "International flight" : "Domestic flight"    
+    const flightType = ifInternational ? "international flight" : "domestic flight"    
     const noRedeem =  Math.floor(mileage /(ifInternational? 50000:25000))           // how many flights the user can redeem
     const placeFlightOrder =()=>{
         //compute the updated mileage
@@ -173,6 +173,7 @@ function OrderFlight(){
                     </p>
                 </section>
                 ) : (
+                
                 <div className="checkoutWrapper">
                     <div className="orderInfoContainer">
                         <div className="orderInfoWrapper">
@@ -287,13 +288,16 @@ function OrderFlight(){
                                         <div> Security Code (CVV)</div>
                                         <input type="text" className="cardInput" name="CVV" id="CVV" />
                                     </div>
+                                    <button className="fightOrderBTN" onClick={placeFlightOrder}>Place Order</button>
                                 </form>
-                            
+                                
                             </div>                            
                             )}
-                    <div>                    
+                            
+                        <div>          
+                                      
                     </div>
-                    <button className="fightOrder-btn" onClick={placeFlightOrder}>Place Order</button>
+                    
                     </div>
                 </div>    
                 </div>
