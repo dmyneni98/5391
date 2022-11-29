@@ -117,13 +117,13 @@ function FlightSearchBar(){
                     className="searchText"
                     >{`${number.passenger} Passenger `}</span>
                     {openNumber && (
-                    <div className="options">
-                        <div className="optionItem">
+                    <div className="passenger-options">
+                        <div className="passenger-optionItem">
                         
-                        <div className="optionCounter">
+                        <div className="passenger-optionCounter">
                             <button
                             disabled={number.passenger <= 1}
-                            className="optionCounterButton"
+                            className="passenger-optionCounterButton"
                             onClick={() => handleNumber("passenger","d")}
                             >
                             -
@@ -132,7 +132,7 @@ function FlightSearchBar(){
                             {number.passenger}
                             </span>
                             <button
-                            className="optionCounterButton"
+                            className="passenger-optionCounterButton"
                             onClick={() => handleNumber("passenger","i")}
                             >
                             +
