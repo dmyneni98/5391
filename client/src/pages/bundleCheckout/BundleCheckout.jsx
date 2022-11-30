@@ -47,8 +47,10 @@ function OrderFlight(){
     const discountRate = 0.2
 
     //const userName = "Myles"  //wait to change. after get authentication
-    //   const userName=localStorage.getItem("user")
-    const userName = "John@1234";
+    // const userName=localStorage.getItem("user")
+    const userName=localStorage.getItem("user")
+    console.log(userName)
+   // const userName = "John@1234";
 
     useEffect(()=>{
         Promise.all([

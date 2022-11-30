@@ -6,7 +6,7 @@
     
 }
 .checkoutWrapper{
-    background-color: #F4EEFF;;
+    background-color: #f8f4fe;
     width: 80%;
     display: grid;
     grid-template-columns: 3fr 3fr;
@@ -88,7 +88,7 @@
 }
 .fightOrderBTN{
    
-    background-color: hsl(229, 61%, 72%);
+    background-color: hsl(229, 38%, 61%);
     color: white;
     font-weight: bold;
     padding:5px;
@@ -100,7 +100,7 @@
     height: 40px;
 
 }
-.fightOrder-btn:hover{
+.fightOrderBTN:hover{
     background-color:  #DCD6F7;
     color:#424874;
 }

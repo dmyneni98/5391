@@ -6,7 +6,7 @@
     
 }
 .checkoutWrapper{
-    background-color: #F4EEFF;;
+    background-color: #f8f4fe;
     width: 80%;
     display: grid;
     grid-template-columns: 3fr 3fr;

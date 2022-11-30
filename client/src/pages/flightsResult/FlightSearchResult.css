@@ -14,7 +14,7 @@
     justify-content: right;
 }
 .flightListResult{
-    background-color:#F4EEFF;
+    background-color:#f8f4fe;
     width:100% ;
     max-width: 1024px;
     border-radius: 10px;
@@ -30,7 +30,7 @@
     
 }
 .sortButton{
-    background-color:#F4EEFF;
+    background-color:#f8f4fe;
     margin-left:10px;
     color:#424874;
     font-weight: 500;

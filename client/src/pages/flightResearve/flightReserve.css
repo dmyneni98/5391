@@ -10,7 +10,7 @@
 }
 .flightReserveContainer{
   
-    background-color:#F4EEFF;
+    background-color:#f8f4fe;
     width:120% ;
     max-width: 624px;
     border-radius: 10px;
@@ -22,7 +22,7 @@
     justify-items: center;
 }
 .goback-btn{
-    background-color: hsl(229, 61%, 72%);
+    background-color: hsl(229, 23%, 55%);
     color: white;
     font-weight: bold;
     padding:5px;
