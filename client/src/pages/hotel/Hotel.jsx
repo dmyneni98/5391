@@ -44,6 +44,9 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [number, setNumber] = useState(location.state.number);
+  const [flightsOrder, setFlightsOrder] = useState(location.state.flightsOrder)
+  const [isBundle, setIsBundle] = useState(location.state.isBundle);
 
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
   const { user } = useContext(AuthContext);
@@ -165,7 +168,13 @@ const Hotel = () => {
           </div>
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}
+      {openModal && <Reserve setOpen={setOpenModal} 
+      hotelId={id}
+      flightsOrder={flightsOrder}
+      number={number}
+      isBundle={isBundle}
+      options={options}
+      />}
     </div>
   );
 };

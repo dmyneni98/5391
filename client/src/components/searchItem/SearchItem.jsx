@@ -1,8 +1,14 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./searchItem.css";
 
-const SearchItem = ({ item }) => {
+const SearchItem = ({ item, flightsOrder, number, isBundle }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/hotels/${item._id}`, {state: {flightsOrder, number, isBundle}});
+  };
+
   const photos = [
     {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -47,9 +53,7 @@ const SearchItem = ({ item }) => {
         <div className="siDetailTexts">
           <span className="siPrice">${item.cheapestPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <Link to={`/hotels/${item._id}`}>
-          <button className="siCheckButton">See availability</button>
-          </Link>
+          <button className="siCheckButton" onClick={handleClick}>See availability</button>
         </div>
       </div>
     </div>

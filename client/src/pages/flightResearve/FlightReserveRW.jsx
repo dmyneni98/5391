@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from "../../components/header/Header"
 import Footer from "../../components/footer/Footer"
 import "./flightReserve.css"
 import { useLocation,useNavigate } from "react-router-dom"
 import useFetch from "../../hooks/useFetch"
+import { SearchContext } from "../../context/SearchContext";
 
 function FlightReserveRW(){
     const navigate = useNavigate()
@@ -30,7 +31,13 @@ function FlightReserveRW(){
         totalPrice += itemprice
     }
 
+    const {dispatch} = useContext(SearchContext);
+
     const handleReserve = ()=>{
+        if(isBundle) {
+            dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+        }
+
         isBundle? navigate("/hotels",{state:{isBundle,destination,dates,options,flightsOrder,number}})
         :navigate("/flightCheckout",{state:{flightsOrder,number}});
     }

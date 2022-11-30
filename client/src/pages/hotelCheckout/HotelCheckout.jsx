@@ -13,12 +13,24 @@ import { useLocation,useNavigate } from "react-router-dom"
 const HotelCheckout = () => {
     const location = useLocation()
     const [selectedRooms, setSelectedRooms] = useState(location.state.selectedRooms);
-    const [hotels, setHotels] = useState(location.state.hotel);
+    const [hotelRooms, setHotelRooms] = useState(location.state.hotelRooms);
     const [dates, setDates] = useState(location.state.dates);
     const [hotelReservation,setHotelReservation] = useState([]);
     const [userId,setUserId] = useState("");
     const [success, setSuccess] = useState(false);
+    const [options, setOptions] = useState(location.state.options);
+    const [hotelId, setHotelId] = useState(location.state.hotelId);
     const navigate = useNavigate();
+    const selectedHotelRooms = selectedRooms.map((roomId) => {
+        const hotelRoom = hotelRooms.filter((hotelRoom) => hotelRoom._id == roomId);
+        if(hotelRoom.length > 0) {
+            return hotelRooms[0];
+        }
+        return {title: null};
+    });
+    // console.log(hotelRooms);
+    // console.log(selectedRooms);
+    // console.log(selectedHotelRooms);
 
     const userName = "John@1234";
 
@@ -35,23 +47,23 @@ const HotelCheckout = () => {
 
     const placeHotelOrder = async () => {
         let hotelData = ""
-        hotels.map((hotel)=>(
-            hotelData = {hotel:hotel._id, numPeople : hotel.maxPeople },  
-            hotelReservation.push(hotelData)))  
-        fetch(`/users/${userId._id}`,{
-            method: 'PUT', // or 'PUT'
-            headers: {'Content-Type': 'application/json',},
-            body: JSON.stringify({
-                "hotelOrder":hotelReservation,
-            }),
-        })
-        .then(() => {console.log("userInfo has updated")})
-        .catch((error) => {console.error('Error:', error);
-        });
+        selectedRooms.map((roomId)=>(
+            hotelData = {hotel: hotelId, room:roomId, numPeople : options.adult + options.children },  
+            hotelReservation.push(hotelData))) 
+        if(hotelData) { 
+            fetch(`/users/${userId._id}`,{
+                method: 'PUT', // or 'PUT'
+                headers: {'Content-Type': 'application/json',},
+                body: JSON.stringify({
+                    "hotelOrder":hotelReservation,
+                }),
+            })
+            .then(() => {console.log("userInfo has updated with hotel")})
+            .catch((error) => {console.error('Error:', error);
+            });
+        }
         setSuccess(true);
     };
-
-    console.log(hotels);
     
     return (
         <div>
@@ -77,24 +89,25 @@ const HotelCheckout = () => {
                             </div>
                             <div className="flightSummary">
                             <>
-                                {hotels.map((item)=>
+                                {selectedHotelRooms.map((item)=>
                                 <div className="flightSummaryBox">
                                     <div className="flightSummaryBox-flightNum">
-                                        {item.title}
+                                        <div className="flightSubBox">
+                                            {item.title}
+                                        </div>
                                     </div>
                                     <div className="flightSummaryBox-info">
-                                        <div className="flightSubBox">
-                                            <FontAwesomeIcon icon={faArrowRight} className="arrowIcon"  /> 
-                                            {item.maxPeople} people
+                                        <h3>
+                                            Number of People: {options.adult + options.children}
                                             
 
-                                        </div>
-                                        <div className="flightSubBox">
-                                            <FontAwesomeIcon icon={faArrowRight} className="arrowIcon"  /> 
-                                            ${item.price}
+                                        </h3>
+                                        <br></br>
+                                        <h3>
+                                            Price: $ {item.price}
                                             
 
-                                        </div>
+                                        </h3>
                                     </div>
                                 </div>
                                 )}

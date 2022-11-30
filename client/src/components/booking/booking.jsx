@@ -9,6 +9,14 @@ const BookingList  = () => {
     const { data, loading, error, reFetch } = useFetch(
         "http://localhost:8800/api/users/booking/"+localStorage.getItem("userid")
       );
+
+    const hotelResponse = useFetch(
+      "http://localhost:8800/api/users/hotelbooking/"+localStorage.getItem("userid")
+    );
+
+    console.log(hotelResponse);
+
+    
      /* if(data.length == 0)
         {
           setMsg("We don't have any reservationa for this user.")
@@ -49,7 +57,7 @@ const BookingList  = () => {
                   Arrive City : {item.arriveCity}
                   </div>
                   <div className="textInfo">
-                     Price : {item.price}
+                     Price : $ {item.price}
                   </div>
                   <div className="textInfo">
                      Departing Time : {item.departDate.substring(0, 10)}
@@ -64,9 +72,30 @@ const BookingList  = () => {
           )
 
         }
-        
-
-        
+        { (
+            hotelResponse.data.length ? <>
+              {
+                hotelResponse.data.map((item) => 
+                <span className="flightItemContainer">
+                <span className="partItemContainer">
+                <div className="textInfo">
+                   Hotel: {item.hotel.name} </div>
+                <div className="textInfo">
+                Room: {item.room.title}
+                </div>
+                <div className="textInfo">
+                Number of People : {item.numPeople}
+                </div>
+                <div className="textInfo">
+                  Price : $ {item.room.price}
+                </div>
+                </span>  
+                </span>
+              )}
+            </> : <>
+            </>
+        )
+        }
         </div>
 
  )   

@@ -25,25 +25,36 @@ function OrderFlight(){
     const [ifInternational, setIfInternational] =useState(false)
     const [userId,setUserId] = useState("")                             // store user info
     const [flightReservation,setFlightReservation] = useState([])       // store user.flightOrder
+    const [hotelReservation,setHotelReservation] = useState([]);
     const [success, setSuccess] = useState(false);
 
-    const [hotelOrder, setHotelOrder] = useState(location.state.hotelOrder)
+    const [hotelRooms, setHotelRooms] = useState(location.state.hotelRooms);
+    const [selectedRooms, setSelectedRooms] = useState(location.state.selectedRooms);
+    const [hotelId, setHotelId] = useState(location.state.hotelId);
+    const [options, setOptions] = useState(location.state.options);
     const [hotelList, setHotelList] = useState()
+
+    const selectedHotelRooms = selectedRooms.map((roomId) => {
+        const hotelRoom = hotelRooms.filter((hotelRoom) => hotelRoom._id == roomId);
+        if(hotelRoom.length > 0) {
+            return hotelRooms[0];
+        }
+        return {title: null};
+    });
 
     const mileageRate = 0.01
     const taxRate = 0.15
 
     //const userName = "Myles"  //wait to change. after get authentication
-      const userName=localStorage.getItem("user")
-      console.log(userName)
-
+    //   const userName=localStorage.getItem("user")
+    const userName = "John@1234";
 
     useEffect(()=>{
         Promise.all([
             fetch(`/flights?_id=${flightsOrder[0]}`),
             fetch(`/flights?_id=${flightsOrder[1]}`),
             fetch(`/users?username=${userName}`),
-            fetch(`/hotels?_id=${hotelOrder}`),     //   <- fetch hotel info
+            fetch(`/hotels?_id=${hotelId}`),     //   <- fetch hotel info
           ]).then(async([aa, bb, cc, dd]) => {
             const a = await aa.json();
             const b = await bb.json();
@@ -59,6 +70,7 @@ function OrderFlight(){
             setMileage(c[0].mileage)
             setIfInternational(a[0].ifInternational)
             setFlightReservation(c[0].flightOrder) 
+            setHotelReservation(c[0].hotelOrder);
 
             setHotelList(d[0])
 
@@ -94,12 +106,31 @@ function OrderFlight(){
         flightsList.map((flight)=>(
             flightData = {flight:flight._id, numPassenger : number.passenger },  
             flightReservation.push(flightData)))  
+
+        let hotelData = "";
+        selectedRooms.map((roomId)=>(
+            hotelData = {hotel: hotelId, room:roomId, numPeople : options.adult + options.children },  
+            hotelReservation.push(hotelData)))
+
+        if(hotelData) {
+            fetch(`/users/${userId._id}`,{
+                method: 'PUT', // or 'PUT'
+                headers: {'Content-Type': 'application/json',},
+                body: JSON.stringify({
+                    "hotelOrder":hotelReservation
+                }),
+            })
+            .then(() => {console.log("userInfo has updated with hotel")})
+            .catch((error) => {console.error('Error:', error);
+            });
+        }
+
         fetch(`/users/${userId._id}`,{
             method: 'PUT', // or 'PUT'
             headers: {'Content-Type': 'application/json',},
             body: JSON.stringify({
                 "mileage": updatedMileage,
-                "flightOrder":flightReservation,
+                "flightOrder":flightReservation
             }),
         })
         .then(() => {console.log("userInfo has updated")})
@@ -124,15 +155,22 @@ function OrderFlight(){
             .then((data) => {console.log("flight info has updated")})
             .catch((error) => { console.error('Error:', error);})
             ))
+
         setSuccess(true);
     }
       
     let totalPrice = 0
+    let totalHotelPrice=0
     let priceList = []
     const getTotalPrice = ()=>{
         totalPrice = 0
         priceList.map(itemprice=>totalPrice += itemprice)
         totalPrice = totalPrice.toFixed(2)
+    }
+    const getTotalHotelPrice = () => {
+        totalHotelPrice=0;
+        selectedHotelRooms.map(({price}) => totalHotelPrice += price);
+        totalHotelPrice = totalHotelPrice.toFixed(2)
     }
     const removeLargest = ()=>{
         const noFlightCanRedeem =  Math.floor(mileage /(ifInternational? 50000:25000))
@@ -221,6 +259,32 @@ function OrderFlight(){
                                 </>
 
                             </div>
+                            <div className="flightSummary">
+                            <>
+                                {selectedHotelRooms.map((item)=>
+                                <div className="flightSummaryBox">
+                                    <h4>Hotel Summary</h4>
+                                    <div className="flightSummaryBox-flightNum">
+                                        {item.title}
+                                    </div>
+                                    <div className="flightSummaryBox-info">
+                                        <div className="flightSubBox">
+                                            <FontAwesomeIcon icon={faArrowRight} className="arrowIcon"  /> 
+                                            {options.adult + options.children} people
+                                            
+
+                                        </div>
+                                        <div className="flightSubBox">
+                                            <FontAwesomeIcon icon={faArrowRight} className="arrowIcon"  /> 
+                                            $ {item.price}
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+                                )}
+                                </>
+                            </div>
                             <div className="flightOrderTitle">
                             <h3 className="paymentTitle">Trip Summary</h3>
                             <div>{number.passenger} passenger</div>
@@ -239,8 +303,13 @@ function OrderFlight(){
                                <h4>$ {totalPrice}</h4></> }
                             </div>
                             <div className="flightAndPrice">
+                                <h4>Hotel</h4>
+                                {getTotalHotelPrice()}
+                                <h4>$ {totalHotelPrice} </h4>
+                            </div>
+                            <div className="flightAndPrice">
                                 <h4>Taxes and Fees</h4>
-                                <h4>$ {(totalPrice * taxRate).toFixed(2)} </h4>
+                                <h4>$ {((totalPrice * taxRate) + (totalHotelPrice * taxRate)).toFixed(2)} </h4>
                             </div>
                             <div className="mileageRedeem">
                                 <hr />
@@ -259,7 +328,7 @@ function OrderFlight(){
                             <div className="paymentContainer">
                                 <div className="flightAndPrice">
                                     <h3>Total</h3>
-                                    <h3>$ {(totalPrice * (1+taxRate)).toFixed(2)} </h3>
+                                    <h3>$ {(totalPrice * (1+taxRate) + totalHotelPrice * (1+taxRate)).toFixed(2)} </h3>
                                 </div>
                                 <h5 className="mileageInfo">You can accumulate {((totalPrice*mileageRate).toFixed(1))} miles</h5>
                             </div>                                                                  

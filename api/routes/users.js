@@ -5,6 +5,7 @@ import {
   getUser,
   getUsers,
   getBooking,
+  getHotelBooking
 } from "../controller/user.js";
 
 
@@ -12,6 +13,8 @@ import {
 const router = express.Router();
 
 router.get("/booking/:id", getBooking);
+
+router.get("/hotelbooking/:id", getHotelBooking);
 //UPDATE
 router.put("/:id", updateUser);
 

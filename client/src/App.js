@@ -42,7 +42,7 @@ function App() {
         <Route path="/hotels" element={<List/>}/>
         <Route path="/hotels/:id" element={<Hotel/>}/>
         <Route path="/bundle" element={<Bundle/>}/>
-        <Route path="/bundle/Checkout" element={<BundleCheckout/>}/>
+        <Route path="/bundleCheckout" element={<BundleCheckout/>}/>
         <Route path="/hotelCheckout" element={<HotelCheckout/>}/>
       </Routes>
     </BrowserRouter>

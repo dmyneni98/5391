@@ -9,7 +9,7 @@ import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Reserve = ({ setOpen, hotelId }) => {
+const Reserve = ({ setOpen, hotelId, flightsOrder, number, isBundle, options }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
@@ -63,7 +63,11 @@ const Reserve = ({ setOpen, hotelId }) => {
         })
       );
       setOpen(false);
-      navigate("/hotelCheckout", {state: {hotel: data, selectedRooms, dates}});
+      if(!isBundle) {
+        navigate("/hotelCheckout", {state: {hotelId, hotelRooms: data, selectedRooms, dates, options}});
+      } else {
+        navigate("/bundleCheckout", {state: {hotelId, hotelRooms: data, selectedRooms, dates, flightsOrder, number, isBundle, options}})
+      }
     } catch (err) {}
   };
   return (
@@ -91,7 +95,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                   <label>{roomNumber.number}</label>
                   <input
                     type="checkbox"
-                    value={roomNumber._id}
+                    value={item._id}
                     onChange={handleSelect}
                     disabled={!isAvailable(roomNumber)}
                   />

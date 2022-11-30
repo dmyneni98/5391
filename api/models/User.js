@@ -83,6 +83,7 @@ const UserSchema = new mongoose.Schema(
           type: [
               {
                   hotel: { type: String },
+                  room: {type: String},
                   numPeople: { type: Number }
               }
           ],

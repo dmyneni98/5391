@@ -1,5 +1,7 @@
 import User from "../models/User.js";
 import Flight from "../models/Flight.js"
+import Hotel from "../models/Hotel.js";
+import Room from "../models/Room.js";
 export const updateUser = async (req,res,next)=>{
     try {
       const updatedUser = await User.findByIdAndUpdate(
@@ -47,6 +49,40 @@ export const updateUser = async (req,res,next)=>{
         })
       );
       res.status(200).json(list)
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  export const getHotelBooking = async (req, res, next) => {
+    try {
+      const user = await User.findById(req.params.id);
+      const roomList = await Promise.all(
+        user.hotelOrder.map((hotelOrder) => {
+          return Room.findById(hotelOrder.room);
+        })
+      );
+
+      const hotelList = await Promise.all(
+        user.hotelOrder.map((hotelOrder) => { 
+          return Hotel.findById(hotelOrder.hotel);
+        })
+      );
+
+      console.log(roomList);
+      console.log(hotelList);
+
+      const list = user.hotelOrder.map((hotelOrder, i) => {
+        return {
+          hotel: hotelList[i],
+          room: roomList[i],
+          numPeople: hotelOrder.numPeople
+        }
+      });
+
+      console.log(list);
+
+      res.status(200).json(list);
     } catch (err) {
       next(err);
     }

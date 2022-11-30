@@ -16,8 +16,11 @@ const List = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
   const [dates, setDates] = useState(location.state.dates);
+  const [isBundle, setIsBundle] = useState(location.state.isBundle);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
+  const [flightsOrder, setFlightsOrder] = useState(location.state.flightsOrder);
+  const [number, setNumber] = useState(location.state.number);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
@@ -114,7 +117,11 @@ const List = () => {
             ) : (
               <>
                 {data.map((item) => (
-                  <SearchItem item={item} key={item._id} />
+                  <SearchItem item={item} key={item._id} 
+                  flightsOrder={flightsOrder} setFlightsOrder={setFlightsOrder}
+                  number={number} setNumber={setNumber}
+                  isBundle={isBundle} setIsBundle={setIsBundle}
+                  />
                 ))}
               </>
             )}
