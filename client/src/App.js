@@ -22,6 +22,7 @@ import Bundle from "./pages/Bundle/Bundle";
 import FlightStatus from "./pages/flightStatus/FlightStatus";
 import HotelCheckout from "./pages/hotelCheckout/HotelCheckout";
 import BundleCheckout from "./pages/bundleCheckout/BundleCheckout";
+import FlightStatusResult from "./pages/flightStatus/flightStatusResult";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/hotels/:id" element={<Hotel/>}/>
         <Route path="/bundle" element={<Bundle/>}/>
         <Route path="/flightStatus" element={<FlightStatus/>}/>
+        <Route path="/flightStatus/Result" element={<FlightStatusResult/>}/>
         <Route path="/bundle/Checkout" element={<BundleCheckout/>}/>
         <Route path="/hotelCheckout" element={<HotelCheckout/>}/>
       </Routes>

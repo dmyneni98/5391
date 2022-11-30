@@ -288,7 +288,7 @@ function OrderFlight(){
                                         <div> Security Code (CVV)</div>
                                         <input type="text" className="cardInput" name="CVV" id="CVV" />
                                     </div>
-                                    <button className="fightOrderBTN" onClick={placeFlightOrder}>Place Order</button>
+                                    
                                 </form>
                                 
                             </div>                            
@@ -297,7 +297,7 @@ function OrderFlight(){
                         <div>          
                                       
                     </div>
-                    
+                    <button className="fightOrderBTN" onClick={placeFlightOrder}>Place Order</button>
                     </div>
                 </div>    
                 </div>

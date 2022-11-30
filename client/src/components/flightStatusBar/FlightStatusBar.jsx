@@ -11,48 +11,40 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate} from "react-router-dom";
 
-
-
-
 function FlightStatus(){
    
-    const [startDate, setStartDate] = useState(new Date());
-    const [flightsOrder, setFlightsOrder] = useState([])
-
+    const [departDate, setDepartDate] = useState(new Date());
+    const [flightNum, setFlightsNum] = useState("")
     
-
-
-
     const navigate = useNavigate()
-
-    
-
-    const handleSearch =()=> {
-        navigate("/flightList",{state:{flightsOrder,startDate}});
+    const handleSearchStatus =()=> {
+        navigate("/flightStatus/Result",{state:{flightNum,departDate}});
     }
     
     return(
     
         <div className="flightSearchContainer">
-           
+        
             <div className="flightSearchWrapper">
-                <div className="flightSearch">
+                <div className="flightStatus">
                 
-                <div className="flightSearchItem">
+                <div className="flightStatusSearchItem">
                     <FontAwesomeIcon icon={faPlane} className="searchIcon" />   
                     <input 
                         type="text" 
                         placeholder="Flight Number" 
                         className="searchInput"
-                        onChange={e=>flightsOrder(e.target.value.toLowerCase())}/>
+                        onChange={e=>(setFlightsNum(e.target.value))}/>
                 </div>
                 
-                <div className="flightSearchItem">
+                <div className="flightStatusDate">
+
                     <FontAwesomeIcon icon={faCalendar} className="searchIcon" />   
+                    <div className="status-date">Depart Date</div>
                     <DatePicker 
         
-                        selected={startDate} 
-                        onChange={(date) => setStartDate(date)}
+                        selected={departDate} 
+                        onChange={(date) => setDepartDate(date)}
                         dateFormat="yyyy/MM/dd"
                         minDate={new Date()}
                         showYearDropdown
@@ -62,15 +54,18 @@ function FlightStatus(){
                 </div>
                 
                 
-                <div className="flightSearchItem">
+                <div className="flightStatusSearchItem">
             
-            <button className="flight-buttom" onClick={handleSearch}>
+            <button className="flightStatusSearch-buttom" onClick={handleSearchStatus}>
             Search
             </button>
         
-        </div>
             </div>
-   </div>
+            </div>
+
+
+
+             </div>
            
         </div>
 

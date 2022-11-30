@@ -1,10 +1,10 @@
-.flightSearch {
+.flightStatus {
     height: 30px;
     background-color: white;
     border: 3px solid #A6B1E1;
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: space-around;
+    grid-template-columns: 5fr 8fr 3fr;
     padding: 10px 0px;
     border-radius: 5px;
     width: 100%;
@@ -17,16 +17,29 @@
     justify-content: center;
     display: flex;
     margin-top: 10px;
+    align-items: center;
   }
   
   .searchIcon {
     color: #DCD6F7;
   }
   
-  .flightSearchItem {
+  .flightStatusSearchItem {
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 100%;
+    margin-left:15px;
+        align-items: center;
+    justify-content: center;
+  }
+  .flightStatusDate {
+    display: grid;
+    grid-template-columns: 1fr 5fr 20fr;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-left:15px
   }
   
   .searchInput {
@@ -35,7 +48,11 @@
     color:#424874;
 
   }
-  
+  .status-date{
+    color:grey;
+    font-size: 14px;
+    margin-right: 0px;
+  }
   .searchText {
     color: hsl(229, 61%, 72%);
     cursor: pointer;
@@ -51,9 +68,9 @@
     color:#424874;
 
   }
-  .flight-buttom{
+  .flightStatusSearch-buttom{
     background-color: hsl(229, 61%, 72%);
- 
+    width: 80%;
     color: white;
     font-weight: 500;
     border: none;
@@ -61,7 +78,7 @@
     cursor: pointer;
     border-radius: 15px;
   }
-  .flight-buttom:hover{
+  .flightStatusSearch-buttom:hover{
     background-color:  #DCD6F7;
     color:#424874;
 }
