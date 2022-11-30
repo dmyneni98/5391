@@ -19,9 +19,9 @@ import HotelSearchBar from "./pages/hotelSearchBar/HotelSearchBar";
 import Hotel from "./pages/hotel/Hotel";
 import List from "./pages/list/List";
 import Bundle from "./pages/Bundle/Bundle";
+import FlightStatus from "./pages/flightStatus/FlightStatus";
 import HotelCheckout from "./pages/hotelCheckout/HotelCheckout";
 import BundleCheckout from "./pages/bundleCheckout/BundleCheckout";
-
 
 
 function App() {
@@ -42,7 +42,8 @@ function App() {
         <Route path="/hotels" element={<List/>}/>
         <Route path="/hotels/:id" element={<Hotel/>}/>
         <Route path="/bundle" element={<Bundle/>}/>
-        <Route path="/bundleCheckout" element={<BundleCheckout/>}/>
+        <Route path="/flightStatus" element={<FlightStatus/>}/>
+        <Route path="/bundle/Checkout" element={<BundleCheckout/>}/>
         <Route path="/hotelCheckout" element={<HotelCheckout/>}/>
       </Routes>
     </BrowserRouter>
