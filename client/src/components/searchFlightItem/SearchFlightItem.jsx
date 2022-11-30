@@ -27,10 +27,10 @@ const SearchItem = ( props) => {
         if (props.roundWay){
             props.setRoundWay(false);
             props.flightsOrder.push(props.item._id)
-            if(localStorage.getItem("user")!="")
+           
             navigate("/flightList",{state:{isBundle,destination,dates,options,roundWay,departCity,arrivetCity,startDate,returnDate,number}});
-            else
-            navigate("/login")
+           
+           
         }
         else{
             props.flightsOrder.push(props.item._id)

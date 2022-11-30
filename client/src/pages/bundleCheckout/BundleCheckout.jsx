@@ -42,7 +42,7 @@ function OrderFlight(){
         return {title: null};
     });
 
-    const mileageRate = 0.01
+    const mileageRate = 1
     const taxRate = 0.15
 
     //const userName = "Myles"  //wait to change. after get authentication

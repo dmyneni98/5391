@@ -45,7 +45,7 @@ function App() {
         <Route path="/bundle" element={<Bundle/>}/>
         <Route path="/flightStatus" element={<FlightStatus/>}/>
         <Route path="/flightStatus/Result" element={<FlightStatusResult/>}/>
-        <Route path="/bundle/Checkout" element={<BundleCheckout/>}/>
+        <Route path="/bundleCheckout" element={<BundleCheckout/>}/>
         <Route path="/hotelCheckout" element={<HotelCheckout/>}/>
       </Routes>
     </BrowserRouter>

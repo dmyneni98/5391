@@ -1,0 +1,58 @@
+.statusContainer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+.statusWrapper{
+    width:100% ;
+    max-width: 1024px; 
+    color:#424874;
+    padding: 30px;
+    text-align: left;
+    font-size:17px ;
+ 
+}
+
+.statusTitle{
+    color:#424874;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom:50px;
+}
+.singleFlightStatusContainer{
+    display: flex;
+    justify-items: center;
+}
+.statusError{
+    margin-top: 60px;
+    text-align: center;
+    font-size: 2opx;
+    font-weight: bold;
+}
+.flightIndividualItem{
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr 2fr 2fr 2fr 3fr ;
+    height: 50px;
+    border: solid hsl(233, 27%, 54%) ;
+    
+   }
+  .flightStatusArrow{
+   width: 80%;
+   align-self: cente;
+   border: 1px solid #424874;
+  }
+  .flightIndividualItemInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .flightIndividualTitel{
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr 6fr 3fr ;
+    height: 50px;
+    border: solid;
+    font-weight: bold;
+    font-size: 18px;
+    order: solid hwb(233 64% 16%) ;
+   }

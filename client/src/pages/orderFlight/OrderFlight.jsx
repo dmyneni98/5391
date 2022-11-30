@@ -27,7 +27,7 @@ function OrderFlight(){
     const [flightReservation,setFlightReservation] = useState([])       // store user.flightOrder
     const [success, setSuccess] = useState(false);
 
-    const mileageRate = 0.01
+    const mileageRate = 1
     const taxRate = 0.15
 
     //for testing
