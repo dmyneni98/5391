@@ -23,7 +23,7 @@
     color: lightgray;
   }
   
-  .headerSearchItem {
+  .bundleHeaderSearchItem {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -34,9 +34,10 @@
     outline: none;
   }
   
-  .headerSearchText {
-    color:#424874;
+  .bundleHeaderSearchText {
+    color:grey;
     cursor: pointer;
+    font-size: 14px;
   }
   .date {
     position: absolute;
@@ -44,7 +45,7 @@
     z-index: 2;
   }
   
-  .options {
+  .bundleOptions {
     margin-left: 5px;
     position: absolute;
     top: 446px;
@@ -56,18 +57,31 @@
     background-color: white;
     align-items: center;
   }
+  .bundleDateOptions{
+   
+    position: absolute;
+    top: 395px;
+    margin-right: 5px;
+    border: 1px solid #A6B1E1;
+    border-radius: 5px;
+    color: #424874;
+    cursor: pointer;
+    background-color: white;
+    align-items: center;
+  }
   
-  .optionItem {
+  .bundleOptionItem {
     width: 200px;
     display: flex;
     justify-content: space-between;
     margin: 10px;
+
   }
-  .optionText{
+  .bundleOptionText{
     color:#424874;
   }
   
-  .optionCounter {
+  .bundleOptionCounter {
     display: flex;
     align-items: center;
     gap: 10px;

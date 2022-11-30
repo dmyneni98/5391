@@ -104,7 +104,7 @@ const BundleSearchBar = () => {
                 )}
         />
         </div>
-        <div className="headerSearchItem">
+        <div className="bundleHeaderSearchItem">
         <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
         <span
             onClick={() => (
@@ -114,38 +114,39 @@ const BundleSearchBar = () => {
                 setStartDate(dates[0].startDate),
                 setReturntDate(dates[0].endDate)
                 )}
-            className="headerSearchText"
+            className="bundleHeaderSearchText"
         >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
             dates[0].endDate,
             "MM/dd/yyyy"
         )}`}</span>
         {openDate && (
-            <DateRange
-            editableDateInputs={true}
-            onChange={(item) => (
-                setDates([item.selection])
-
-
-                )}
-            moveRangeOnFirstSelection={false}
-            ranges={dates}
-            className="date"
-            minDate={new Date()}
+            <div className="bundleDateOptions">
+                <DateRange
+                editableDateInputs={true}
+                onChange={(item) => (
+                    setDates([item.selection])
+                    )}
+                moveRangeOnFirstSelection={false}
+                ranges={dates}
+                className="date"
+                minDate={new Date()}
             />
+            </div>
+           
         )}
     
         </div>
-        <div className="headerSearchItem">
+        <div className="bundleHeaderSearchItem">
         <FontAwesomeIcon icon={faPerson} className="headerIcon" />
         <span
             onClick={() => setOpenOptions(!openOptions)}
-            className="headerSearchText"
+            className="bundleHeaderSearchText"
         >{`${options.adult} adult · ${options.children} children · ${options.room} room`}</span>
         {openOptions && (
-            <div className="options">
-            <div className="optionItem">
-                <span className="optionText">Adult</span>
-                <div className="optionCounter">
+            <div className="bundleOptions">
+            <div className="bundleOptionItem">
+                <span className="bundleOptionText">Adult</span>
+                <div className="bundleOptionCounter">
                 <button
                     disabled={(options.adult <= 1)||(number.passenger <=1 )}
                     className="optionCounterButton"

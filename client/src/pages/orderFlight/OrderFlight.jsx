@@ -233,7 +233,7 @@ function OrderFlight(){
                                <h4>$ {totalPrice}</h4></> }
                             </div>
                             <div className="flightAndPrice">
-                                <h4>Taxes and Fees</h4>
+                                <h4>Taxes and Fees (15%)</h4>
                                 <h4>$ {(totalPrice * taxRate).toFixed(2)} </h4>
                             </div>
                             <div className="mileageRedeem">
@@ -255,7 +255,7 @@ function OrderFlight(){
                                     <h3>Total</h3>
                                     <h3>$ {(totalPrice * (1+taxRate)).toFixed(2)} </h3>
                                 </div>
-                                <h5 className="mileageInfo">You can accumulate {((totalPrice*mileageRate).toFixed(1))} miles</h5>
+                                <h5 className="mileageInfo">You can accumulate {((totalPrice*mileageRate).toFixed(0))} miles</h5>
                             </div>                                                                  
                             </div>
                             </div>

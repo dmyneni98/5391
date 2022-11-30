@@ -39,7 +39,7 @@
   .flightStatusArrow{
    width: 80%;
    align-self: cente;
-   border: 1px solid #424874;
+   border:  1.5px solid hsl(233, 38%, 64%);
   }
   .flightIndividualItemInfo{
     display: flex;

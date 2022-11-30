@@ -44,6 +44,7 @@ function OrderFlight(){
 
     const mileageRate = 1
     const taxRate = 0.15
+    const discountRate = 0.2
 
     //const userName = "Myles"  //wait to change. after get authentication
     //   const userName=localStorage.getItem("user")
@@ -97,7 +98,7 @@ function OrderFlight(){
         if (ifRedeem && noRedeem > 0){          //if the user want to redeem and he has enought miles to redeem
             mileageChange -= (redeemedFlight * (ifInternational? 50000 :25000))         //calculate the mileage the user use
         }
-        const newMileage = ((totalPrice * (1+taxRate)) * mileageRate).toFixed(0)        //calculate the mileage the new flights generated
+        const newMileage = ((totalPrice * (1+taxRate))*(1-discountRate) * mileageRate).toFixed(0)        //calculate the mileage the new flights generated
         mileageChange = Number(mileageChange) + Number(newMileage) 
         const updatedMileage = mileage + mileageChange
 
@@ -308,8 +309,12 @@ function OrderFlight(){
                                 <h4>$ {totalHotelPrice} </h4>
                             </div>
                             <div className="flightAndPrice">
-                                <h4>Taxes and Fees</h4>
-                                <h4>$ {((totalPrice * taxRate) + (totalHotelPrice * taxRate)).toFixed(2)} </h4>
+                                <h4>Discount (20%)</h4>
+                                <h4> - $ {((totalPrice * discountRate) + (totalHotelPrice * discountRate)).toFixed(2)} </h4>
+                            </div>
+                            <div className="flightAndPrice">
+                                <h4>Taxes and Fees (15%)</h4>
+                                <h4>$ {((totalPrice * taxRate*(1-discountRate)) + (totalHotelPrice * taxRate)*(1-discountRate)).toFixed(2)} </h4>
                             </div>
                             <div className="mileageRedeem">
                                 <hr />
@@ -328,9 +333,9 @@ function OrderFlight(){
                             <div className="paymentContainer">
                                 <div className="flightAndPrice">
                                     <h3>Total</h3>
-                                    <h3>$ {(totalPrice * (1+taxRate) + totalHotelPrice * (1+taxRate)).toFixed(2)} </h3>
+                                    <h3>$ {(totalPrice *(1-discountRate)* (1+taxRate) + totalHotelPrice * (1-discountRate) * (1+taxRate)).toFixed(2)} </h3>
                                 </div>
-                                <h5 className="mileageInfo">You can accumulate {((totalPrice*mileageRate).toFixed(1))} miles</h5>
+                                <h5 className="mileageInfo">You can accumulate {((totalPrice*mileageRate*(1-discountRate)).toFixed(0))} miles</h5>
                             </div>                                                                  
                             </div>
                             </div>
