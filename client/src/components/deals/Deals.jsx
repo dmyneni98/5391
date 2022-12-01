@@ -46,7 +46,7 @@ export const DealsList = ()=>{
     };  
 
     return(
-       <div>
+       <div style={{ marginLeft: "14%"}}>
         <div class="flightSearchContainer">
            <div class="flightSearch">
             <div class="flightSearchItem">
@@ -55,10 +55,10 @@ export const DealsList = ()=>{
             </div>
             
             <div class="flightSearchItem">
-            Price: <input type="number" placeholder="Min Price" className="searchInput" id="min" name="min" onChange={handleChange}/>
+            Min Price: $<input type="number" placeholder="Min Price" className="searchInput" id="min" name="min" onChange={handleChange}/>
             </div>
             <div class="flightSearchItem">
-                <input type="number" placeholder="Max Price" className="searchInput" id="max" name="min" onChange={handleChange}/>
+            Max Price: $ <input type="number" placeholder="Max Price" className="searchInput" id="max" name="min" onChange={handleChange}/>
             </div>
             
             <div className="flightSearchItem">
@@ -78,7 +78,7 @@ export const DealsList = ()=>{
                   <span className="flightItemContainer">
                   <span className="partItemContainer">
                   <div className="textInfo">
-                     Airlines :{item.name} </div>
+                     Airlines : {item.name} </div>
                   <div className="textInfo">
                   departAirport : {item.origin}
                   </div>
@@ -86,7 +86,7 @@ export const DealsList = ()=>{
                   arriveAirport : {item.destination}
                   </div>
                   <div className="textInfo">
-                     Price : {item.price}
+                     Price : $ {item.price}
                   </div>
                   <div className="textInfo">
                      Departing Time : {item.starttime}

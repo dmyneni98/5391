@@ -54,22 +54,27 @@ const Reserve = ({ setOpen, hotelId, flightsOrder, number, isBundle, options }) 
   const navigate = useNavigate();
 
   const handleClick = async () => {
-    try {
-      await Promise.all(
-        selectedRooms.map((roomId) => {
-          const res = axios.put(`/rooms/availability/${roomId}`, {
-            dates: alldates,
-          });
-          return res.data;
-        })
-      );
-      setOpen(false);
-      if(!isBundle) {
-        navigate("/hotelCheckout", {state: {hotelId, hotelRooms: data, selectedRooms, dates, options}});
-      } else {
-        navigate("/bundleCheckout", {state: {hotelId, hotelRooms: data, selectedRooms, dates, flightsOrder, number, isBundle, options}})
-      }
-    } catch (err) {}
+    if(localStorage.getItem("user") != "") {
+      try {
+        await Promise.all(
+          selectedRooms.map((roomId) => {
+            const res = axios.put(`/rooms/availability/${roomId}`, {
+              dates: alldates,
+            });
+            return res.data;
+          })
+        );
+        setOpen(false);
+        if(!isBundle) {
+          navigate("/hotelCheckout", {state: {hotelId, hotelRooms: data, selectedRooms, dates, options}});
+        } else {
+          navigate("/bundleCheckout", {state: {hotelId, hotelRooms: data, selectedRooms, dates, flightsOrder, number, isBundle, options}})
+        }
+      } catch (err) {}
+    }
+    else{
+      navigate("/login")
+    }
   };
   return (
     <div className="reserve">
