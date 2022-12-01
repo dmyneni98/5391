@@ -7,10 +7,11 @@
     width:100% ;
     max-width: 1024px; 
     color:#424874;
-    padding: 30px;
+    padding: 50px;
     text-align: left;
     font-size:17px ;
- 
+    background-color: #f8f4fe;
+    border-radius: 10px;
 }
 
 .statusTitle{
