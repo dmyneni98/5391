@@ -21,10 +21,12 @@ const HotelCheckout = () => {
     const [options, setOptions] = useState(location.state.options);
     const [hotelId, setHotelId] = useState(location.state.hotelId);
     const navigate = useNavigate();
+    
     const selectedHotelRooms = selectedRooms.map((roomId) => {
+        
         const hotelRoom = hotelRooms.filter((hotelRoom) => hotelRoom._id == roomId);
         if(hotelRoom.length > 0) {
-            return hotelRooms[0];
+            return hotelRoom[0];
         }
         return {title: null};
     });

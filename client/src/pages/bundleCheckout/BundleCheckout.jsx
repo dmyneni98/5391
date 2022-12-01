@@ -37,7 +37,7 @@ function OrderFlight(){
     const selectedHotelRooms = selectedRooms.map((roomId) => {
         const hotelRoom = hotelRooms.filter((hotelRoom) => hotelRoom._id == roomId);
         if(hotelRoom.length > 0) {
-            return hotelRooms[0];
+            return hotelRoom[0];
         }
         return {title: null};
     });
@@ -268,21 +268,22 @@ function OrderFlight(){
                                 <div className="flightSummaryBox">
                                     <h4>Hotel Summary</h4>
                                     <div className="flightSummaryBox-flightNum">
-                                        {item.title}
+                                    <div className="flightSubBox">
+                                            {item.title}
+                                        </div>
                                     </div>
                                     <div className="flightSummaryBox-info">
-                                        <div className="flightSubBox">
-                                            <FontAwesomeIcon icon={faArrowRight} className="arrowIcon"  /> 
-                                            {options.adult + options.children} people
+                                        <h3>
+                                            Number of People: {options.adult + options.children}
                                             
 
-                                        </div>
-                                        <div className="flightSubBox">
-                                            <FontAwesomeIcon icon={faArrowRight} className="arrowIcon"  /> 
-                                            $ {item.price}
+                                        </h3>
+                                        <br></br>
+                                        <h3>
+                                            Price: $ {item.price}
                                             
 
-                                        </div>
+                                        </h3>
                                     </div>
                                 </div>
                                 )}

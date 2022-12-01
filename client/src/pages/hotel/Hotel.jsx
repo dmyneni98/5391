@@ -58,7 +58,7 @@ const Hotel = () => {
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
-    return diffDays;
+    return diffDays ? diffDays : 1 ;
   }
 
   const days = dayDifference(dates[0].endDate, dates[0].startDate);
@@ -129,7 +129,7 @@ const Hotel = () => {
               <span>{data.address}</span>
             </div>
             <span className="hotelDistance">
-              Excellent location – {data.distance}m from center
+              Excellent location – {data.distance} from center
             </span>
             <span className="hotelPriceHighlight">
               Book a stay over ${data.cheapestPrice} at this property and get a
@@ -159,7 +159,7 @@ const Hotel = () => {
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
+                Our cheapest Price:<b> ${days * data.cheapestPrice * options.room}</b> ({days}{" "}
                   nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>

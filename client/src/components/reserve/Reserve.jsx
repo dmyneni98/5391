@@ -41,6 +41,7 @@ const Reserve = ({ setOpen, hotelId, flightsOrder, number, isBundle, options }) 
   };
 
   const handleSelect = (e) => {
+
     const checked = e.target.checked;
     const value = e.target.value;
     setSelectedRooms(
