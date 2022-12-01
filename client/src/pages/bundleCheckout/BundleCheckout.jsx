@@ -354,7 +354,7 @@ function OrderFlight(){
                                 <form className="CreditCard">
                                     <div className="cardInfo-expireDate">
                                         <div> Name On Card</div>
-                                        <input type="text" className="cardInput" placeholder="Fisrt Name"  name="firstName" id="firstName" />
+                                        <input type="text" className="cardInput" placeholder="First Name"  name="firstName" id="firstName" />
                                        
                                         <input type="text" className="cardInput" placeholder="Last Name"  name="lastName" id="lastName" />
                                     </div>

@@ -81,7 +81,7 @@ const Hotel = () => {
   };
 
   const handleClick = () => {
-    if (user) {
+    if(localStorage.getItem("user") != "") {
       setOpenModal(true);
     } else {
       navigate("/login");
