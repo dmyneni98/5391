@@ -349,7 +349,7 @@ function OrderFlight(){
                         <div className="orderInfoWrapper">
                         { (totalPrice!=0)&&(
                             <div className="paymentContainer">
-                                <h3 >Payment Detais</h3>
+                                <h3 >Payment Details</h3>
                                 <hr />
                                 <form className="CreditCard">
                                     <div className="cardInfo-expireDate">
